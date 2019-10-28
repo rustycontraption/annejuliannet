@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<div class="gallery">
+
+    <a class="lightbox" href="#img20"><img src="static/img/gs750/magazine_sm.jpg"></a>
+    <div id="img20" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/magazine.jpg"/>
+        <br><br><h2 class="lightbox-caption">An old advert for reference since I didn't take a picture before I started.</h2>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img27" class='previous'><</a>
+        <a href="#img21" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img21"><img src="static/img/gs750/coatrack_sm.jpg"></a>
+    <div id="img21" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/coatrack.jpg"/>
+        <br><br><h2 class="lightbox-caption">I needed to learn to weld for this project so I made this coat rack with the TIG welder I had available to me.</h2>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img20" class='previous'><</a>
+        <a href="#img22" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img22"><img src="static/img/gs750/skateboard_sm.jpg"></a>
+    <div id="img22" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/skateboard.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img21" class='previous'><</a>
+        <a href="#img23" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img23"><img src="static/img/gs750/fiberglass_sm.jpg"></a>
+    <div id="img23" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/fiberglass.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img22" class='previous'><</a>
+        <a href="#img24" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img24"><img src="static/img/gs750/seat_sm.jpg"></a>
+    <div id="img24" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/seat.jpg"/>
+        <br><br><h2 class="lightbox-caption">Foam and upholstery were done by Mac's Upholstery in Ballard.</h2>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img23" class='previous'><</a>
+        <a href="#img25" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img25"><img src="static/img/gs750/standoffs_sm.jpg"></a>
+    <div id="img25" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/standoffs.jpg"/>
+        <br><br>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img24" class='previous'><</a>
+        <a href="#img26" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img26"><img src="static/img/gs750/tray_sm.jpg"></a>
+    <div id="img26" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/tray.jpg"/>
+        <br><br>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img25" class='previous'><</a>
+        <a href="#img27" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img27"><img src="static/img/gs750/fusebox_sm.jpg"></a>
+    <div id="img27" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/gs750/fusebox.jpg"/>
+        <br><br>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img26" class='previous'><</a>
+        <a href="#img20" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+  </div><!--gallery-->
+
+
+
+
+
+
+
+<!-- Pager -->
+<hr />
+<div class="grid-pager">
+    <div class="grid-prev"><a class="btn-primary" href="{{prev}}">< prev.</a></div>
+    <div class="grid-home"><a class="btn-primary" href="{{url_for('index')}}">home</a></div>
+    <div class="grid-next"><a class="btn-primary" href="{{next}}">next ></a></div>
+</div>
+
+{% endblock %}

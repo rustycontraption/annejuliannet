@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<div class="gallery">
+
+    <a class="lightbox" href="#img10"><img src="static/img/rabbit/rabbit_sm.jpg"></a>
+    <div id="img10" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/rabbit.jpg">
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img17" class='previous'><</a>
+        <a href="#img11" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img11"><img src="static/img/rabbit/carb_sm.jpg"></a>
+    <div id="img11" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/carb.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img10" class='previous'><</a>
+        <a href="#img12" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img12"><img src="static/img/rabbit/throttlecable_sm.jpg"></a>
+    <div id="img12" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/throttlecable.jpg"/>
+        <br><br><h2 class="lightbox-caption">FUN FACT: I now carry a fire extinguisher in the car after the machine screws holding the carb together backed out, the top half of the carb separated from the bottom half, and the whole thing caught on fire.</h2>
+
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img10" class='previous'><</a>
+        <a href="#img13" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+   <a class="lightbox" href="#img13"><img src="static/img/rabbit/pulley_sm.jpg"></a>
+    <div id="img13" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/pulley.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img12" class='previous'><</a>
+        <a href="#img14" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+   <a class="lightbox" href="#img14"><img src="static/img/rabbit/sketching_sm.jpg"></a>
+    <div id="img14" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/sketching.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img13" class='previous'><</a>
+        <a href="#img15" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+   <a class="lightbox" href="#img15"><img src="static/img/rabbit/fusebox_sm.jpg"></a>
+    <div id="img15" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/fusebox.jpg"/>
+        <br><br><h2 class="lightbox-caption">FUN FACT: I wired the first ignition coil wrong and it exploded.  The coil pictured is a second one I had lying around my garage.</h2>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img14" class='previous'><</a>
+        <a href="#img16" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img16"><img src="static/img/rabbit/fuelpump_sm.jpg"></a>
+    <div id="img16" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/fuelpump.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img15" class='previous'><</a>
+        <a href="#img10" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img17"><img src="static/img/rabbit/regulator_sm.jpg"></a>
+    <div id="img17" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/rabbit/regulator.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img16" class='previous'><</a>
+        <a href="#img10" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+  </div><!--gallery-->
+
+
+
+
+
+
+
+
+<!-- Pager -->
+<hr />
+<div class="grid-pager">
+    <div class="grid-prev"><a class="btn-primary" href="{{prev}}">< prev.</a></div>
+    <div class="grid-home"><a class="btn-primary" href="{{url_for('index')}}">home</a></div>
+    <div class="grid-next"><a class="btn-primary" href="{{next}}">next ></a></div>
+</div>
+
+
+{% endblock %}

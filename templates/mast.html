@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+
+<div class="gallery">
+
+    <a class="lightbox" href="#img1"><img src="static/img/mast/DIVEcam6_sm.jpg"></a>
+    <div id="img1" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/mast/DIVEcam6.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img9" class='previous'><</a>
+        <a href="#img2" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img2"><img src="static/img/mast/DIVEcam7_sm.jpg"/></a>
+    <div id="img2" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/mast/DIVEcam7.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img1" class='previous'><</a>
+        <a href="#img3" class='next'>></a>
+       </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img3"><img src="static/img/mast/DIVEcam8_sm.jpg"/></a>
+    <div id="img3" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/mast/DIVEcam8.jpg"/>
+          <a class="lightbox-close" href="#_"></a>
+          <a href="#img2" class='previous'><</a>
+          <a href="#img4" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img4"><img src="static/img/mast/DIVEcam9_sm.jpg"/></a>
+    <div id="img4" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/mast/DIVEcam9.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img3" class='previous'><</a>
+        <a href="#img5" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img5"><img src="static/img/mast/DIVEcam_sm.jpg"/></a>
+    <div id="img5" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/mast/DIVEcam.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img4" class='previous'><</a>
+        <a href="#img6" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img6"><img src="static/img/mast/DIVEcam2_sm.jpg"/></a>
+    <div id="img6" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/mast/DIVEcam2.jpg"/>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img5" class='previous'><</a>
+        <a href="#img7" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+  <a class="lightbox" href="#img7"><img src="static/img/mast/DIVEcam3_sm.jpg"/></a>
+  <div id="img7" class="lightbox-target">
+    <div class="lightbox-image-container">
+      <img src="static/img/mast/DIVEcam3.jpg"/>
+      <a class="lightbox-close" href="#_"></a>
+      <a href="#img6" class='previous'><</a>
+      <a href="#img8" class='next'>></a>
+    </div><!--lightbox-image-container-->
+  </div><!--lightbox-target-->
+
+  <a class="lightbox" href="#img8"><img src="static/img/mast/DIVEcam4_sm.jpg"/></a>
+  <div id="img8" class="lightbox-target">
+    <div class="lightbox-image-container">
+      <img src="static/img/mast/DIVEcam4.jpg"/>
+      <a class="lightbox-close" href="#_"></a>
+      <a href="#img7" class='previous'><</a>
+      <a href="#img9" class='next'>></a>
+    </div><!--lightbox-image-container-->
+  </div><!--lightbox-target-->
+
+  <a class="lightbox" href="#img9"><img src="static/img/mast/DIVEcam5_sm.jpg"/></a>
+  <div id="img9" class="lightbox-target">
+    <div class="lightbox-image-container">
+      <img src="static/img/mast/DIVEcam5.jpg"/>
+      <a class="lightbox-close" href="#_"></a>
+      <a href="#img8" class='previous'><</a>
+      <a href="#img1" class='next'>></a>
+    </div><!--lightbox-image-container-->
+  </div><!--lightbox-target-->
+</div><!--gallery-->
+
+
+
+<!-- Pager -->
+<hr />
+<div class="grid-pager">
+    <div class="grid-prev"><a class="btn-primary" href="{{prev}}">< prev.</a></div>
+    <div class="grid-home"><a class="btn-primary" href="{{url_for('index')}}">home</a></div>
+    <div class="grid-next"><a class="btn-primary" href="{{next}}">next ></a></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<div class="post-preview">
+  <a class="preview" href="{{url_for('rabbit')}}">
+    <img class="preview" src="static/img/rabbit/rabbit_sm.jpg">
+    <h2 class="post-title">1981 Volkswagen Rabbit</h2>
+    <h3 class="post-subtitle">From 1.6L diesel to 1.8L gasser.</h3>
+  </a>
+</div><!--end post-->
+<hr>
+<div class="post-preview">
+  <a class="preview" href="{{url_for('gs750')}}">
+    <img class="preview" src="static/img/gs750/gs750_sm.jpg">
+    <h2 class="post-title">1982 Suzuki GS750</h2>
+    <h3 class="post-subtitle"></h3>
+  </a>
+</div><!--end post-->
+<hr>
+<div class="post-preview">
+  <a class="preview" href="{{url_for('mast')}}">
+    <img class="preview" src="static/img/mast/DIVEcam8_sm.jpg">
+    <h2 class="post-title">Marine Live-Stream System</h2>
+    <h3 class="post-subtitle">Highline's Marine Science and Technology Center at Redondo Beach wanted an underwater video live-streaming system that could monitor the Puget Sound 24/7. </h3></a>
+</div><!--end post--> 
+
+
+        
+{% endblock %}
