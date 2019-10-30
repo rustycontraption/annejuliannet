@@ -4,15 +4,17 @@
 
 {% block content %}
 
-<br><p>Highline's Marine Science and Technology Center at Redondo Beach wanted an underwater video streaming system that could monitor the Puget Sound 24/7.
+<p>Highline's Marine Science and Technology Center at Redondo Beach wanted an underwater video streaming system that could monitor the Puget Sound 24/7.
     With no budget available I built one for them out of spare items slated for recycling.
     The system utilized three USB webcams mounted at different depths in the Puget Sound in a waterproof enclosure supplied by the MaST Center, and connected to Dell E6400 laptops via 30ft USB cords.
-    <br><br>Some project details:</p><br>
-    <ul>
-      <li>Webcam feeds streamed over the network via RTSP to a Wowza media server for distribution, to reduce usage of the limited MaST center bandwidth.</li><br>
-      <li>Controlled by two bash scripts. One script initializes the video streams and transcoding using CVLC, and the other runs as a cron job to detect stream failures and automatically restart the stream since CVLC does not have that functionality built in.</li><br>
-      <li>Laptops provided resiliency against the regular power outages at the MaST center and enough computing resources to live transcode the video feed.</li>
-    </ul>
+    <br/><br />Some project details:
+</p>
+<br />
+<ul>
+  <li>Webcam feeds streamed over the network via RTSP to a Wowza media server for distribution, to reduce usage of the limited MaST center bandwidth.</li><br>
+  <li>Controlled by two bash scripts. One script initializes the video streams and transcoding using CVLC, and the other runs as a cron job to detect stream failures and automatically restart the stream since CVLC does not have that functionality built in.</li><br>
+  <li>Laptops provided resiliency against the regular power outages at the MaST center and enough computing resources to live transcode the video feed.</li>
+</ul>
 
 <div class="gallery">
 

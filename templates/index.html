@@ -3,19 +3,22 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<div class="post-preview">
-    <a class="preview" href="{{url_for('mast')}}">
+<a href="{{url_for('mast')}}"" class="post-preview"> 
+<div >
       <img class="preview" src="static/img/mast/DIVEcam8_sm.jpg">
       <h2 class="post-title">Marine Live-Stream System</h2>
-      <h3 class="post-subtitle">Highline's Marine Science and Technology Center at Redondo Beach wanted an underwater video live-streaming system that could monitor the Puget Sound 24/7. </h3></a>
-</div><!--end post--> 
+      <h3 class="post-subtitle">Highline's Marine Science and Technology Center at Redondo Beach wanted an underwater video live-streaming system that could monitor the Puget Sound 24/7. </h3>
+</div><!--end post-->  </a>
+<hr>
 
+<a href="{{url_for('miniped')}}"" class="post-preview"> 
 <div class="post-preview">
-  <a class="preview" href="{{url_for('miniped')}}">
-    <img class="preview" src="static/img/miniped/mockupMount_sm.jpg">
+    <img class="preview" src="static/img/miniped/mountMockup_sm.jpg">
     <h2 class="post-title">Miniped</h2>
-    <h3 class="post-subtitle"></h3></a>
+    <h3 class="post-subtitle"></h3>
 </div><!--end post--> 
+</a>
+<hr>
 
 <div class="post-preview">
   <a class="preview" href="{{url_for('rabbit')}}">
@@ -24,6 +27,7 @@
     <h3 class="post-subtitle"></h3>
   </a>
 </div><!--end post-->
+<hr>
 
 <div class="post-preview">
   <a class="preview" href="{{url_for('gs750')}}">

@@ -349,16 +349,16 @@ footer{
 
 .btn{font-size:95%;font-weight:800;padding:15px 15px;letter-spacing:1px;text-transform:uppercase;border-radius:0;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;}
 .btn-primary{background-color:#222;border-color:#222}
-.btn-primary:active,.btn-primary:focus,.btn-primary:hover{color:#fff;background-color:#222!important;border-color:#222!important}
+.btn-primary:active,.btn-primary:focus,.btn-primlass="preview" ary:hover{color:#fff;background-color:#222!important;border-color:#222!important}
 .btn-lg{font-size:100%;padding:25px 35px}
 
 /* Blog-post styling */
 
 
-.post-preview>a{color:#bcbcbc}
-.post-preview>a:focus,.post-preview>a:hover{text-decoration:none;color:#ffffff}
-.post-preview>a>.post-title{font-size:30px;margin-top:20px;margin-bottom:10px}
-.post-preview>a>.post-subtitle{font-weight:300;margin:0 0 10px}
+.post-preview{color:#bcbcbc}
+.post-preview:focus,.post-preview:hover{text-decoration:none;color:#ffffff}
+.post-title{font-size:30px;margin-top:20px;margin-bottom:10px}
+.post-subtitle{font-weight:300;margin:0 0 10px}
 .post-preview::after{
   clear:both;
   content: '';
