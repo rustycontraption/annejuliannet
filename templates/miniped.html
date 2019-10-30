@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<p>
+    This project started as a toy to bring on the next Gambler 500 but it quickly got way out of hand.  
+    After fixing it up and riding it on a whim in a local moped endurance race, I became enamoured with 
+    the idea of a moped project.  Mopeds are crazy expensive where I live so instead I picked up a trashed
+    moped engine and set about finagling it into the pitbike.
+</p>
+
+<div class="gallery">
+
+    <a class="lightbox" href="#img01"><img src="static/img/miniped/pitbike_sm.jpg"></a>
+    <div id="img01" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/miniped/pitbike.png">
+        <br /><br /><h2 class="lightbox-caption">The pitbike soon after I got it.  It was in pretty bad shape.</h2>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#imgX" class='previous'><</a>
+        <a href="#img02" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+
+    <a class="lightbox" href="#img11"><img src="static/img/miniped/mountMockup_sm.jpg"></a>
+    <div id="img11" class="lightbox-target">
+      <div class="lightbox-image-container">
+        <img src="static/img/miniped/mountMockup.jpg"/>
+        <br /><br /><h2 class="lightbox-caption">I designed some mounting adapters in Fusion 360 and 3D printed them to test fitment.</h2>
+        <a class="lightbox-close" href="#_"></a>
+        <a href="#img01" class='previous'><</a>
+        <a href="#img03" class='next'>></a>
+      </div><!--lightbox-image-container-->
+    </div><!--lightbox-target-->
+</div><!--gallery-->
+
+<!-- Pager -->
+<hr />
+<div class="grid-pager">
+    <div class="grid-prev"><a class="btn-primary" href="{{prev}}">< prev.</a></div>
+    <div class="grid-home"><a class="btn-primary" href="{{url_for('index')}}">home</a></div>
+    <div class="grid-next"><a class="btn-primary" href="{{next}}">next ></a></div>
+</div>
+
+
+{% endblock %}
