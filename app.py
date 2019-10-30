@@ -23,8 +23,18 @@ def mast():
             "mast.html",
             heading="mast",
             subheading="",
-            next="rabbit",
+            next="miniped",
             prev="gs750"
+        )
+
+@app.route('/miniped')
+def miniped():
+     return render_template(
+           "miniped.html",
+           heading="miniped",
+           subheading="probably a bad idea",
+           next="rabbit",
+           prev="mast"
         )
      
 @app.route('/rabbit')
@@ -34,7 +44,7 @@ def rabbit():
             heading="rabbit",
             subheading="engine swap",
             next="gs750",
-            prev="mast"
+            prev="miniped"
         )
 
 @app.route('/gs750')
@@ -46,26 +56,19 @@ def gs750():
             next="mast",
             prev="rabbit"
         )
-@app.route('/miniped')
-def miniped():
-     return render_template(
-           "miniped.html",
-           heading="miniped",
-           subheading="a bad idea",
-           next="mast",
-           prev="gs750"
-        )
 
 @app.route('/about')
 def about():
      return render_template(
-           "about.html"
+           "about.html",
+           heading="about"
      )
 
 @app.route('/contact')
 def contact():
      return render_template(
-           "contact.html"
+           "contact.html",
+           heading="contact"
      )
 
 if __name__ == '__main__':
