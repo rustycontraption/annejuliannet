@@ -38,8 +38,8 @@ def mast():
                  {"name":"DIVEcam5","details":""}
             ],
             
-            heading="marine live-stream system",
-            subheading="",
+            heading="mast",
+            subheading="marine live-stream system",
             next="miniped",
             prev="gs750"
         )
