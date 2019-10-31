@@ -3,39 +3,44 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<a href="{{url_for('mast')}}"" class="post-preview"> 
+<a href="{{url_for('mast')}}" class="post-preview"> 
 <div >
-      <img class="preview" src="static/img/mast/DIVEcam8_sm.jpg">
+      <img class="preview" src="{{ url_for('static',filename='img/mast/DIVEcam8_sm.jpg')}}">
       <h2 class="post-title">Marine Live-Stream System</h2>
       <h3 class="post-subtitle">Highline's Marine Science and Technology Center at Redondo Beach wanted an underwater video live-streaming system that could monitor the Puget Sound 24/7. </h3>
-</div><!--end post-->  </a>
+</div><!--end post-->
+</a>
 <hr>
 
-<a href="{{url_for('miniped')}}"" class="post-preview"> 
+<a href="{{url_for('miniped')}}" class="post-preview"> 
 <div class="post-preview">
-    <img class="preview" src="static/img/miniped/mountMockup_sm.jpg">
+    <img class="preview" src="{{ url_for('static',filename='img/miniped/mountMockup_sm.jpg')}}">
     <h2 class="post-title">Miniped</h2>
     <h3 class="post-subtitle"></h3>
 </div><!--end post--> 
 </a>
+
 <hr>
 
+<a class="post-preview" href="{{url_for('rabbit')}}">
 <div class="post-preview">
-  <a class="preview" href="{{url_for('rabbit')}}">
-    <img class="preview" src="static/img/rabbit/rabbit_sm.jpg">
+  
+    <img class="preview" src="{{ url_for('static',filename='img/rabbit/rabbit_sm.jpg')}}">
     <h2 class="post-title">1981 Volkswagen Rabbit</h2>
     <h3 class="post-subtitle"></h3>
   </a>
 </div><!--end post-->
-<hr>
+</a>
 
+<hr>
+<a class="post-preview" href="{{url_for('gs750')}}">
 <div class="post-preview">
-  <a class="preview" href="{{url_for('gs750')}}">
-    <img class="preview" src="static/img/gs750/gs750_sm.jpg">
+    <img class="preview" src="{{ url_for('static',filename='img/gs750/gs750_sm.jpg')}}">
     <h2 class="post-title">1982 Suzuki GS750</h2>
     <h3 class="post-subtitle"></h3>
-  </a>
+ 
 </div><!--end post-->
+</a>
 <hr>
 
 

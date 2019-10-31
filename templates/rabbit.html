@@ -14,92 +14,31 @@
 </p>
 
 <div class="gallery">
-
-    <a class="lightbox" href="#img10"><img src="static/img/rabbit/rabbit_sm.jpg"></a>
-    <div id="img10" class="lightbox-target">
+    {% for image in images %}
+    <a class="lightbox" href="#img{{ image.name }}"><img src="{{ url_for('static', filename='img/rabbit/') }}{{ image.name }}_sm.jpg"></a>
+    <div id="img{{ image.name }}" class="lightbox-target">
       <div class="lightbox-image-container">
-        <img src="static/img/rabbit/rabbit.jpg">
+        <img src="{{ url_for('static', filename='img/rabbit/') }}{{ image.name }}.jpg"/>
+        {% if image.details %}
+        <br /><br /><h2 class="lightbox-caption">{{image.details}}</h2>
+        {% endif %}
         <a class="lightbox-close" href="#_"></a>
-        <a href="#img17" class='previous'><</a>
-        <a href="#img11" class='next'>></a>
+        {% if loop.last %}
+          <a href="#img{{ loop.previtem['name'] }}" class='previous'><</a>
+          <a href="#img{{ images[0].name }}" class='next'>></a>
+        {% elif loop.first %}
+          <a href="#img{{ images[7].name }}" class='previous'><</a> <!-- TODO: Don't hard-code index of last item in loop -->
+          <a href="#img{{ loop.nextitem['name'] }}" class='next'>></a>
+        {% else %}
+          <a href="#img{{ loop.previtem['name'] }}" class='previous'><</a>
+          <a href="#img{{ loop.nextitem['name'] }}" class='next'>></a>
+        {% endif %}
       </div><!--lightbox-image-container-->
     </div><!--lightbox-target-->
+    {% endfor %}
+</div><!--gallery-->
+<br />
 
-    <a class="lightbox" href="#img11"><img src="static/img/rabbit/carb_sm.jpg"></a>
-    <div id="img11" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/carb.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img10" class='previous'><</a>
-        <a href="#img12" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img12"><img src="static/img/rabbit/throttlecable_sm.jpg"></a>
-    <div id="img12" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/throttlecable.jpg"/>
-        <br><br><h2 class="lightbox-caption">FUN FACT: I now carry a fire extinguisher in the car after the machine screws holding the carb together backed out, the top half of the carb separated from the bottom half, and the whole thing caught on fire.</h2>
-
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img10" class='previous'><</a>
-        <a href="#img13" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-   <a class="lightbox" href="#img13"><img src="static/img/rabbit/pulley_sm.jpg"></a>
-    <div id="img13" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/pulley.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img12" class='previous'><</a>
-        <a href="#img14" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-   <a class="lightbox" href="#img14"><img src="static/img/rabbit/sketching_sm.jpg"></a>
-    <div id="img14" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/sketching.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img13" class='previous'><</a>
-        <a href="#img15" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-   <a class="lightbox" href="#img15"><img src="static/img/rabbit/fusebox_sm.jpg"></a>
-    <div id="img15" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/fusebox.jpg"/>
-        <br><br><h2 class="lightbox-caption">FUN FACT: I wired the first ignition coil wrong and it exploded.  The coil pictured is a second one I had lying around my garage.</h2>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img14" class='previous'><</a>
-        <a href="#img16" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img16"><img src="static/img/rabbit/fuelpump_sm.jpg"></a>
-    <div id="img16" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/fuelpump.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img15" class='previous'><</a>
-        <a href="#img10" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img17"><img src="static/img/rabbit/regulator_sm.jpg"></a>
-    <div id="img17" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/rabbit/regulator.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img16" class='previous'><</a>
-        <a href="#img10" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-  </div><!--gallery-->
-
-  
   <h3>Notes:</h3>
           <ul>
             <li>VW used the same engine block for their diesel and gasoline engines from the 1970s to the 1990s, making a lot of the parts (including the transmission and engine mounts) interchangeable.  The junkyard near my house happened to have a single engine that used that block so I bought it, after compression testing it in the junkyard to make sure it wasn't completely trashed.</li>
@@ -109,7 +48,6 @@
             <li>There was no wiring for a fuel pump because the diesel fuel pump was mechanical.  The engine I purchased used an electric fuel pump, but a few models of pre-1980 gasoline mk1 Volkswagens with the same engine block also used a mechanical fuel pump so I was able to source one that would work.</li>
             <li>Finding a water pump pulley that would line up with the alternator and crankshaft pulleys took longer than anything else.  Offset and other dimensions weren't available, so I had no way to identify the correct one prior to purchase.  I was considering fabricating one, but I found the winning pulley off of an Audi 4000 (after purchasing and trying about three others first).</li>
             <li>The carb, a Weber 32/36, came with frustrating flaws directly from Weber.  At one point the car died on the highway, and while diagnosing the issue back at my shop the carb caught on fire (the screws holding the carb intake to the carb body backed out, the carb intake separated and fuel splashed out all over the intake and exhaust).  Also, the accelerator pump jet was missing its ball valve, which I discovered after the accelerator pump jet backed out and was rattling around loose in the carb.</li>
-           
           </ul>
           
 <!-- Pager -->

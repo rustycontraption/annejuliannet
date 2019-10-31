@@ -12,29 +12,30 @@
 </p>
 
 <div class="gallery">
-
-    <a class="lightbox" href="#img01"><img src="static/img/miniped/pitbike_sm.jpg"></a>
-    <div id="img01" class="lightbox-target">
+    {% for image in images %}
+    <a class="lightbox" href="#img{{ image.name }}"><img src="{{ url_for('static', filename='img/miniped/') }}{{ image.name }}_sm.jpg"></a>
+    <div id="img{{ image.name }}" class="lightbox-target">
       <div class="lightbox-image-container">
-        <img src="static/img/miniped/pitbike.png">
-        <br /><br /><h2 class="lightbox-caption">The pitbike soon after I got it.  It was in pretty bad shape.</h2>
+        <img src="{{ url_for('static', filename='img/miniped/') }}{{ image.name }}.jpg"/>
+        {% if image.details %}
+        <br /><br /><h2 class="lightbox-caption">{{image.details}}</h2>
+        {% endif %}
         <a class="lightbox-close" href="#_"></a>
-        <a href="#imgX" class='previous'><</a>
-        <a href="#img02" class='next'>></a>
+        {% if loop.last %}
+          <a href="#img{{ loop.previtem['name'] }}" class='previous'><</a>
+          <a href="#img{{ images[0].name }}" class='next'>></a>
+        {% elif loop.first %}
+          <a href="#img{{ images[1].name }}" class='previous'><</a> <!-- TODO: Don't hard-code index of last item in loop -->
+          <a href="#img{{ loop.nextitem['name'] }}" class='next'>></a>
+        {% else %}
+          <a href="#img{{ loop.previtem['name'] }}" class='previous'><</a>
+          <a href="#img{{ loop.nextitem['name'] }}" class='next'>></a>
+        {% endif %}
       </div><!--lightbox-image-container-->
     </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img11"><img src="static/img/miniped/mountMockup_sm.jpg"></a>
-    <div id="img11" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/miniped/mountMockup.jpg"/>
-        <br /><br /><h2 class="lightbox-caption">I designed some mounting adapters in Fusion 360 and 3D printed them to test fitment.</h2>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img01" class='previous'><</a>
-        <a href="#img03" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
+    {% endfor %}
 </div><!--gallery-->
+<br />
 
 <!-- Pager -->
 <hr />

@@ -17,97 +17,30 @@
 </ul>
 
 <div class="gallery">
-
-    <a class="lightbox" href="#img1"><img src="static/img/mast/DIVEcam6_sm.jpg"></a>
-    <div id="img1" class="lightbox-target">
+    {% for image in images %}
+    <a class="lightbox" href="#img{{ image.name }}"><img src="{{ url_for('static', filename='img/mast/') }}{{ image.name }}_sm.jpg"></a>
+    <div id="img{{ image.name }}" class="lightbox-target">
       <div class="lightbox-image-container">
-        <img src="static/img/mast/DIVEcam6.jpg"/>
+        <img src="{{ url_for('static', filename='img/mast/') }}{{ image.name }}.jpg"/>
+        {% if image.details %}
+        <br /><br /><h2 class="lightbox-caption">{{image.details}}</h2>
+        {% endif %}
         <a class="lightbox-close" href="#_"></a>
-        <a href="#img9" class='previous'><</a>
-        <a href="#img2" class='next'>></a>
+        {% if loop.last %}
+          <a href="#img{{ loop.previtem['name'] }}" class='previous'><</a>
+          <a href="#img{{ images[0].name }}" class='next'>></a>
+        {% elif loop.first %}
+          <a href="#img{{ images[8].name }}" class='previous'><</a> <!-- TODO: Don't hard-code index of last item in loop -->
+          <a href="#img{{ loop.nextitem['name'] }}" class='next'>></a>
+        {% else %}
+          <a href="#img{{ loop.previtem['name'] }}" class='previous'><</a>
+          <a href="#img{{ loop.nextitem['name'] }}" class='next'>></a>
+        {% endif %}
       </div><!--lightbox-image-container-->
     </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img2"><img src="static/img/mast/DIVEcam7_sm.jpg"/></a>
-    <div id="img2" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/mast/DIVEcam7.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img1" class='previous'><</a>
-        <a href="#img3" class='next'>></a>
-       </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img3"><img src="static/img/mast/DIVEcam8_sm.jpg"/></a>
-    <div id="img3" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/mast/DIVEcam8.jpg"/>
-          <a class="lightbox-close" href="#_"></a>
-          <a href="#img2" class='previous'><</a>
-          <a href="#img4" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img4"><img src="static/img/mast/DIVEcam9_sm.jpg"/></a>
-    <div id="img4" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/mast/DIVEcam9.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img3" class='previous'><</a>
-        <a href="#img5" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img5"><img src="static/img/mast/DIVEcam_sm.jpg"/></a>
-    <div id="img5" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/mast/DIVEcam.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img4" class='previous'><</a>
-        <a href="#img6" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-    <a class="lightbox" href="#img6"><img src="static/img/mast/DIVEcam2_sm.jpg"/></a>
-    <div id="img6" class="lightbox-target">
-      <div class="lightbox-image-container">
-        <img src="static/img/mast/DIVEcam2.jpg"/>
-        <a class="lightbox-close" href="#_"></a>
-        <a href="#img5" class='previous'><</a>
-        <a href="#img7" class='next'>></a>
-      </div><!--lightbox-image-container-->
-    </div><!--lightbox-target-->
-
-  <a class="lightbox" href="#img7"><img src="static/img/mast/DIVEcam3_sm.jpg"/></a>
-  <div id="img7" class="lightbox-target">
-    <div class="lightbox-image-container">
-      <img src="static/img/mast/DIVEcam3.jpg"/>
-      <a class="lightbox-close" href="#_"></a>
-      <a href="#img6" class='previous'><</a>
-      <a href="#img8" class='next'>></a>
-    </div><!--lightbox-image-container-->
-  </div><!--lightbox-target-->
-
-  <a class="lightbox" href="#img8"><img src="static/img/mast/DIVEcam4_sm.jpg"/></a>
-  <div id="img8" class="lightbox-target">
-    <div class="lightbox-image-container">
-      <img src="static/img/mast/DIVEcam4.jpg"/>
-      <a class="lightbox-close" href="#_"></a>
-      <a href="#img7" class='previous'><</a>
-      <a href="#img9" class='next'>></a>
-    </div><!--lightbox-image-container-->
-  </div><!--lightbox-target-->
-
-  <a class="lightbox" href="#img9"><img src="static/img/mast/DIVEcam5_sm.jpg"/></a>
-  <div id="img9" class="lightbox-target">
-    <div class="lightbox-image-container">
-      <img src="static/img/mast/DIVEcam5.jpg"/>
-      <a class="lightbox-close" href="#_"></a>
-      <a href="#img8" class='previous'><</a>
-      <a href="#img1" class='next'>></a>
-    </div><!--lightbox-image-container-->
-  </div><!--lightbox-target-->
+    {% endfor %}
 </div><!--gallery-->
+<br />
 
 <h3>Build goals and constraints:</h3>
 <ul>
