@@ -3,20 +3,20 @@ annejulian.net is built with Flask and served with AWS Lambda and S3 via Cloudfr
 The structure:
 ```
 Static assets in S3 bucket
-    |
-    |> Cloudfront distribution
-       (static.annejulian.net)
-            |
-            |> Route 53 A record
+        |
+        |__Cloudfront distribution
+           (static.annejulian.net)
+                    |
+                    |__Route 53 A record
 
 Flask Lambda function
-    |
-    |> API Gateway
-            |
-            |> Cloudfront distribution
-               (annejulian.net)
+        |
+        |__API Gateway
                     |
-                    |> Route 53 A record
+                    |__Cloudfront distribution
+                       (annejulian.net)
+                                |
+                                |__Route 53 A record
 ```
 zappa_settings.json:
 
