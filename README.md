@@ -1,4 +1,23 @@
+annejulian.net is built with Flask and served with AWS Lambda and S3 via Cloudfront.  I use Zappa to deploy the Flask app to Lambda.     
+
+The structure:
+
+Static assets in S3 bucket
+    |
+    |> Cloudfront distribution
+            |
+            |> Route 53 A record
+
+Flask Lambda function
+    |
+    |> API Gateway
+            |
+            |> Cloudfront distribution
+                    |
+                    |> Route 53 A record
+
 zappa_settings.json:
+
 ```{
     "dev": {
         "app_function": "app.app",
@@ -20,5 +39,5 @@ zappa_settings.json:
         "certificate_arn":"<REDACTED>,
         "domain":"annejulian.net"
     }
-
 }
+```
