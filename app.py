@@ -8,6 +8,7 @@ from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 app.config['FLASKS3_BUCKET_NAME'] = 'annejulian.net'
+app.config['FLASKS3_CDN_DOMAIN'] = 'static.annejulian.net'
 #app.config['FLASKS3_URL_STYLE'] = 'path'
 s3 = FlaskS3(app)
      
@@ -50,7 +51,7 @@ def miniped():
            "miniped.html",
            images =[
                 {"name":"pitbike","details":"The pitbike soon after I got it.  It was in pretty bad shape."},
-                {"name":"mountMockup","details":"I designed some mounting adapters in Fusion 360 and 3D printed them to test fitment."},
+                {"name":"mountMockup","details":"I designed some engine mounting adapters in Fusion 360 and 3D printed them to test fitment."},
               
            ],
            heading="miniped",
