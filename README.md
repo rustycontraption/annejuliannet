@@ -1,13 +1,15 @@
 annejulian.net is built with Flask and served with AWS Lambda and S3 via Cloudfront.  I use Zappa to deploy the Flask app to Lambda.     
 
-The structure:
+The structure (roughly):
 ```
 Static assets in S3 bucket
         |
         |__Cloudfront distribution
            (static.annejulian.net)
                     |
-                    |__Route 53 A record
+                    |__Route 53 A record 
+                    |
+                    |__static.annejulian.net certificate
 
 Flask Lambda function
         |
@@ -17,7 +19,14 @@ Flask Lambda function
                        (annejulian.net)
                                 |
                                 |__Route 53 A record
+                                |
+                                |__ annejulian.net certificate
 ```
+
+Notes: 
+* The S3 Cloudfront distribution and associated Route 53 record are created manually and the API Gateway Cloudfront Distribution and associated Route 53 record are created automatically with ``` zappa certify```
+* All certs must be in us-east-1 
+
 zappa_settings.json:
 
 ```{
