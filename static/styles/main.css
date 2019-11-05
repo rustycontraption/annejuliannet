@@ -126,8 +126,8 @@ li {
     background: url("../img/gs750/mastgs750_sm.jpg") no-repeat center center;
   }
 
-  header.masthead.mast{
-    background: url("../img/mast/mastmast_sm.jpg") no-repeat center center;
+  header.masthead.dive{
+    background: url("../img/dive/mastdive_sm.jpg") no-repeat center center;
   }
 
   header.masthead.mac{
@@ -148,8 +148,8 @@ li {
     background: url("../img/gs750/mastgs750_sm.jpg") no-repeat center center;
   }
 
-  header.masthead.mast{
-    background: url("../img/mast/mastmast_sm.jpg") no-repeat center center;
+  header.masthead.dive{
+    background: url("../img/dive/mastdive_sm.jpg") no-repeat center center;
   }
 
   header.masthead.mac{
@@ -170,8 +170,8 @@ li {
     background: url("../img/gs750/mastgs750_lg.jpg") no-repeat center center;
   }
 
-  header.masthead.mast{
-    background: url("../img/mast/mastmast_lg.jpg") no-repeat center center;
+  header.masthead.dive{
+    background: url("../img/dive/mastdive_lg.jpg") no-repeat center center;
   }
 
   header.masthead.mac{
@@ -181,7 +181,7 @@ li {
 
 /* MASTHEAD basic styles */
 
-header.masthead, header.masthead.gs750, header.masthead.rabbit, header.masthead.mast, header.masthead.mac{
+header.masthead, header.masthead.gs750, header.masthead.rabbit, header.masthead.dive, header.masthead.mac{
   margin-bottom:20px;
   background-color:#868e96;
   background-attachment:scroll;
@@ -204,7 +204,6 @@ header.masthead .site-heading{
   padding:100px 0;
   color:#fff
 }
-
 
 /* Increases masthead size on larger screens */
 
@@ -239,40 +238,45 @@ header.masthead .page-heading .subheading,header.masthead .site-heading .subhead
 }
 
 /* NAVIGATION */
-
+  
 #mainNav{
   position:absolute;
   border-bottom:1px solid #e9ecef;
   background-color:#fff;
   font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-}
+  font-weight:800;
+  font-size:105%;
+  letter-spacing:1px;
 
-#mainNav{
-  position:absolute;
-  border-bottom:1px solid #e9ecef;
-  background-color:#fff;
-  font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif
 }
 
 #mainNav .navbar-brand{
-  font-weight:800;
-  color:#343a40
+  padding:10px 20px;
+  font-size:110%;
+  color: #343a40;
 }
 
 #mainNav .navbar-toggler{
-  font-size:100%;
   font-weight:800;
   padding:13px;
   text-transform:uppercase;
-  color:#343a40
+  color:#343a40;
+  border: 1px solid;
+  border-radius:.25rem;
+  border-color:rgba(0,0,0,.2);
 }
 
-#mainNav .navbar-nav>li.nav-item>a{
-  font-size:95%;
-  font-weight:800;
-  letter-spacing:1px;
-  text-transform:uppercase
+#mainNav .nav-link{
+  text-transform:uppercase;
+ 
 }
+
+#mainNav .nav-item{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+
 /* Adjust nav per screen size */
 
 @media only screen and (min-width:992px){
@@ -289,12 +293,15 @@ header.masthead .page-heading .subheading,header.masthead .site-heading .subhead
   #mainNav .navbar-brand:focus,#mainNav .navbar-brand:hover{
     color:rgba(255,255,255,.8)
   }
-
-  #mainNav .navbar-nav>li.nav-item>a{
-    padding:10px 20px;color:#fff
+  #mainNav .nav-link{
+      color:#fff;
   }
-
-  #mainNav .navbar-nav>li.nav-item>a:focus,#mainNav .navbar-nav>li.nav-item>a:hover{
+  
+  #mainNav .navbar-nav>li.nav-item>a{
+  
+  }
+  
+  #mainNav .nav-link:focus,#mainNav .nav-link:hover{
     color:rgba(255,255,255,.8)
   }
 }

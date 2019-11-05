@@ -19,14 +19,12 @@ def index():
             "index.html",
             heading="projects",
             subheading="build, break, fix, repeat",
-            next="",
-            prev=""
         )
 
-@app.route('/mast')
-def mast():
+@app.route('/dive')
+def dive():
      return render_template(
-            "mast.html",
+            "dive.html",
             images = [
                  {"name":"DIVEcam6","details":""},
                  {"name":"DIVEcam7","details":""},
@@ -39,8 +37,8 @@ def mast():
                  {"name":"DIVEcam5","details":""}
             ],
             
-            heading="mast",
-            subheading="marine live-stream system",
+            heading="dive",
+            subheading="deep intertidal viewing experience",
             next="miniped",
             prev="gs750"
         )
@@ -57,7 +55,7 @@ def miniped():
            heading="miniped",
            subheading="probably a bad idea",
            next="rabbit",
-           prev="mast"
+           prev="dive"
         )
      
 @app.route('/rabbit')
@@ -96,7 +94,7 @@ def gs750():
             ],
             heading="gs750",
             subheading="brat conversion",
-            next="mast",
+            next="dive",
             prev="rabbit"
         )
 
@@ -104,14 +102,16 @@ def gs750():
 def about():
      return render_template(
            "about.html",
-           heading="about"
+           heading="about",
+           subheading="..."
      )
 
 @app.route('/contact')
 def contact():
      return render_template(
            "contact.html",
-           heading="contact"
+           heading="contact",
+           subheading="..."
      )
 
 if __name__ == '__main__':

@@ -9,19 +9,18 @@
     The system utilized three USB webcams mounted at different depths in the Puget Sound in a waterproof enclosure supplied by the MaST Center, and connected to Dell E6400 laptops via 30ft USB cords.
     <br/><br />Some project details:
 </p>
-<br />
 <ul>
-  <li>Webcam feeds streamed over the network via RTSP to a Wowza media server for distribution, to reduce usage of the limited MaST center bandwidth.</li><br>
-  <li>Controlled by two bash scripts. One script initializes the video streams and transcoding using CVLC, and the other runs as a cron job to detect stream failures and automatically restart the stream since CVLC does not have that functionality built in.</li><br>
+  <li>Webcam feeds streamed over the network via RTSP to a Wowza media server for distribution, to reduce usage of the limited MaST center bandwidth.</li>
+  <li>Controlled by two bash scripts. One script initializes the video streams and transcoding using CVLC, and the other runs as a cron job to detect stream failures and automatically restart the stream since CVLC does not have that functionality built in.</li>
   <li>Laptops provided resiliency against the regular power outages at the MaST center and enough computing resources to live transcode the video feed.</li>
 </ul>
 
 <div class="gallery">
     {% for image in images %}
-    <a class="lightbox" href="#img{{ image.name }}"><img src="{{ url_for('static', filename='img/mast/') }}{{ image.name }}_sm.jpg"></a>
+    <a class="lightbox" href="#img{{ image.name }}"><img src="{{ url_for('static', filename='img/dive/') }}{{ image.name }}_sm.jpg"></a>
     <div id="img{{ image.name }}" class="lightbox-target">
       <div class="lightbox-image-container">
-        <img src="{{ url_for('static', filename='img/mast/') }}{{ image.name }}.jpg"/>
+        <img src="{{ url_for('static', filename='img/dive/') }}{{ image.name }}.jpg"/>
         {% if image.details %}
         <br /><br /><h2 class="lightbox-caption">{{image.details}}</h2>
         {% endif %}
