@@ -16,7 +16,8 @@ s3 = FlaskS3(app)
 @app.route('/')
 def index():
      return render_template(
-            "index.html",
+            #"index.html",
+            "index_react.html",
             heading="projects",
             subheading="build, break, fix, repeat",
         )
@@ -50,6 +51,11 @@ def miniped():
            images =[
                 {"name":"pitbike","details":"The pitbike soon after I got it.  It was in pretty bad shape."},
                 {"name":"mountMockup","details":"I designed some engine mounting adapters in Fusion 360 and 3D printed them to test fitment."},
+                {"name":"bits","details":"Transmission bits all cleaned and ready to be put back together."},
+                {"name":"pedTrans","details":"The <i>first</i> time I almost had everything back together..."},
+                {"name":"exhaust","details":"Version 1.  The flange leaked so I ultimately had to hack it off and replace it with an actual Tomos exhaust header."},
+                {"name":"protoSprocket","details":"I slapped together this atrocity so I could ride the bike up and down the block the very first time I got everything together, just to see if it worked well enough to continue the project.  The original pit bike sprocket was too big, and spaced incorrectly to line up with the Tomos front sprocket."},
+                
               
            ],
            heading="miniped",
