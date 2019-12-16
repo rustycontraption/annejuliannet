@@ -7,34 +7,57 @@ const config = {
         	filename: 'bundle.js',
  	},
  	resolve: {
-        	extensions: ['.js','.jsx','.css','.tsx']
+        	extensions: ['.js','.jsx','.css','.tsx','scss','less'],
+		modules:['node_modules'],
  	},
  	module: {
         	rules: [
 		{
                 	test: /\.(js|jsx|tsx)$/,
                 	exclude: /node_modules/,
-                use: {
                 	loader: 'babel-loader',
                         options: {
-                                presets: [
-                                "@babel/preset-env",
-                                "@babel/preset-react",
-				"@babel/preset-typescript"
-                                ],
+                               	presets: [
+                               		"@babel/preset-env",
+                              		"@babel/preset-react",
+					"@babel/preset-typescript"
+                                	],
 				plugins: [
-				"@babel/plugin-proposal-class-properties"
+					"@babel/plugin-proposal-class-properties",
 				]
-                        }
-                }
-        	},      
-        	{
-                	test: /\.css$/,
-                	use: {
-				loader: 'css-loader',
-			}
-        	},
-		{	
+                        },
+                
+		},
+		{
+		
+			test: /\.css$/,
+			exclude: /node_modules/,
+			use: [
+				{
+					loader: 'style-loader'
+				},
+				{ 
+					loader: 'css-loader'
+				}
+			]
+		},
+		{
+                	test: /\.less$/,
+                    	use: [
+				{
+					loader: 'style-loader'
+				},
+				{	loader: 'less-loader',
+					options: {
+						javascriptEnabled: true,
+					}
+				},
+				{
+					loader: 'css-loader'
+				}
+			]
+		},
+		{		
 			test: /\.(jpg|png|svg)$/,
     			use: [{
         			loader: 'file-loader',

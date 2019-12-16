@@ -1,0 +1,134 @@
+@import '~antd/dist/antd.css';
+
+html,body {
+
+  font-family: 'Raleway', sans-serif;
+  padding: 0;
+  font-size: 105%;
+  background: #222;
+  color: #aaa;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 200;
+  margin: 0.5em 0 0.2em 0;
+}
+
+
+h3{
+  font-size: 1.2em;
+}
+
+p {
+ 
+  color: #888;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
+  margin: 30px 0;
+}
+
+a {
+  color:#a8a8a8;
+  -webkit-transition:all .2s;
+  transition:all .2s
+}
+
+a:focus,a:hover{
+  color:#e69138;
+}
+
+blockquote {
+  font-style:italic;
+  color:#868e96
+}
+
+hr {
+  color:#808080;
+  border-color:#808080;
+}
+
+ul{
+  color:#888
+}
+li {
+  padding-bottom:.5em
+}     
+
+/* ANTD */
+
+/* .ant-row {
+  height: auto;
+  margin-right: 0;
+  margin-left: 0;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+}
+
+.ant-row::before,
+.ant-row::after {
+  display: table;
+  content: '';
+}
+.ant-row::after {
+  clear: both;
+}
+
+.ant-col {
+  
+  min-height: 1px;
+  padding-right: 0;
+  padding-left: 0;
+  flex: 0 0 auto;
+  float: left;
+  display: grid;
+  box-sizing: border-box;
+  width: 25%;
+}
+*/
+
+.ant-menu {
+  font-size: 1rem;
+  font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight:800;
+  font-size:105%;
+  letter-spacing:1px;
+  line-height: 3;
+  float: right;
+  margin-bottom: 0;
+  padding-left: 0;
+  background-color: transparent;
+  list-style: none;
+  outline: none;
+  color: #fff;
+}
+
+
+
+.ant-layout-header {
+  line-height: 64px;
+  background-color: transparent;
+  font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  background-attachment:scroll;
+  position:relative;
+
+}
+
+.masthead {
+
+  top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+  
+
+

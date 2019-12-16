@@ -16,8 +16,8 @@ s3 = FlaskS3(app)
 @app.route('/')
 def index():
      return render_template(
-            "index.html",
-          #   "index_react.html",
+          #   "index.html",
+            "index_react.html",
             heading="projects",
             subheading="build, break, fix, repeat",
         )
