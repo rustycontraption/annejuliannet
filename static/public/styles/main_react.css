@@ -105,19 +105,20 @@ li {
 }
 
 
-
 .ant-layout-header {
   line-height: 64px;
   background-color: transparent;
   font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   background-attachment:scroll;
   position:relative;
-
 }
 
-.masthead {
+.ant-layout-content {
+  background-color: transparent;
 
-  top:0;
+}
+.masthead {
+    top:0;
     left:0;
     height:100%;
     width:100%;
