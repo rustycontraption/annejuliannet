@@ -30,19 +30,36 @@ const Overlay = styled(Header)`
     width:100%;
     padding:0;
     background-color:rgba(48,48,48,0.8);
-    
 `
-const Title = styled.div`
+
+const Heading = styled.div`
     text-align:center;
-    font-weight:300;
-    padding:150px 0;
+    padding: 6rem 0px 7rem 0;
+    margin:0;
+`
+
+const Title = styled.h1`
+    font-weight: 100;
+    font-size: 5rem;
     color:#fff;
-    font-size: 3rem;
-    font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 1rem;
+`
+
+const Subtitle = styled.h1`
+    font-weight: 200;
+    font-size: 2rem;  
+    color:#fff;  
+    font-family: 'Raleway', sans-serif;
+    margin:0;
+
 `
 
 interface MastheadProps {
     page: string;
+    title: string;
+    subtitle: string;
 
 }
 
@@ -51,24 +68,26 @@ export class Masthead extends React.Component<MastheadProps>{
 		super(props)
     }
 
-    mastheadType()  {
-        return (
-            "masthead " + this.props.page
+    mastheadBg(){
+        return(
+            "url(" + s3 + this.props.page + "/mast" + this.props.page + ".jpg)"
         )
     }
 
    render(){
        return(
-            <div className={this.mastheadType()}
+            <div 
                 style={{
-                    backgroundImage: "url(" + s3 + "masthead.jpg)",
+                    backgroundImage: this.mastheadBg(),
                 }}
             >
                 <Overlay>
                     <Navbar />
-                    <Title>projects</Title>
+                    <Heading>
+                        <Title>{this.props.title}</Title>
+                        <Subtitle>{this.props.subtitle}</Subtitle>
+                    </Heading>
                 </Overlay>
-
             </div>
        )
    }

@@ -12,7 +12,6 @@ html,body {
 h1 {
   font-size: 3em;
   font-weight: 200;
-  margin: 0.5em 0 0.2em 0;
 }
 
 
@@ -90,23 +89,48 @@ li {
 
 .ant-menu {
   background-color: transparent;
+
   font-size: 1rem;
   font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight:800;
   font-size:105%;
   letter-spacing:1px;
-  line-height: 3;
+
   float: right;
   margin-bottom: 0;
   padding-left: 0;
-  
+
   list-style: none;
   outline: none;
   text-transform:uppercase;
 }
 
+.ant-menu-horizontal {
+  border-bottom: transparent;
+  vertical-align: middle;
+}
+
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected
+{
+  border-bottom: 2px solid #aaa;
+}
+
+.ant-menu-horizontal > .ant-menu-item > a{
+  color: #fff
+}
+
+.ant-menu-horizontal > .ant-menu-item > a:hover{
+  color: #aaa;
+}
+
 .ant-layout-header {
-  line-height: 64px;
   background-color: transparent;
   font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   background-attachment:scroll;
@@ -115,7 +139,6 @@ li {
 
 .ant-layout {
   background-color: transparent;
-
 }
 
 .ant-layout-footer {
@@ -134,12 +157,5 @@ li {
     background-size: cover;
     background-position: center;
 }
-
-
-
-
-
-
-  
 
 
