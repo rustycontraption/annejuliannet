@@ -2,15 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { Router, Route } from 'react-router'
-import { Row, 
+import { 
+    Row, 
     Col, 
     Menu,
-    Layout
+    Layout,
+    Drawer,
+    Button,
+    Icon
 } from 'antd';
+
+// Navbar import must end in .tsx even though vscode complains about it
+import Navbar from '../components/Navbar.tsx'
 
 import "../static/public/styles/main_react.css";
 
-const { Header, Content, Footer } = Layout;
+import useWindowDimensions from '../components/Utils.tsx'
+
+const { Header } = Layout;
 
 const s3 = 'https://static.annejulian.net/static/img/'
 
@@ -19,26 +28,27 @@ const Overlay = styled(Header)`
     left:0;
     height:100%;
     width:100%;
+    padding:0;
     background-color:rgba(48,48,48,0.8);
+    
 `
-
-const Brand = styled.h1 `
-    font-size: 1.5rem;
-    font-weight:800;
-   
-    letter-spacing:1px;
-    line-height: 3;
-    color: #fff; 
+const Title = styled.div`
+    text-align:center;
+    font-weight:300;
+    padding:150px 0;
+    color:#fff;
+    font-size: 3rem;
+    font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 `
 
 interface MastheadProps {
     page: string;
+
 }
 
 export class Masthead extends React.Component<MastheadProps>{
     constructor(props: MastheadProps) {
 		super(props)
-        
     }
 
     mastheadType()  {
@@ -47,9 +57,6 @@ export class Masthead extends React.Component<MastheadProps>{
         )
     }
 
-
-
-
    render(){
        return(
             <div className={this.mastheadType()}
@@ -57,23 +64,9 @@ export class Masthead extends React.Component<MastheadProps>{
                     backgroundImage: "url(" + s3 + "masthead.jpg)",
                 }}
             >
-
                 <Overlay>
-                    <Row type="flex" align="middle">
-                        <Col span={6}>
-                            <Brand>Anne Julian</Brand>
-                        </Col>
-                        <Col span={18}>
-                            <Menu
-                                mode="horizontal"
-                            >
-                                <Menu.Item key="1">Home</Menu.Item>
-                                <Menu.Item key="2">Projects</Menu.Item>
-                                <Menu.Item key="3">About</Menu.Item>
-                                <Menu.Item key="4">Contact</Menu.Item>
-                            </Menu>
-                        </Col>
-                    </Row>
+                    <Navbar />
+                    <Title>projects</Title>
                 </Overlay>
 
             </div>

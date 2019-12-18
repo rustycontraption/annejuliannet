@@ -1,23 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import {Masthead} from '../components/Masthead'
-import { Row, 
+import { Masthead } from '../components/Masthead';
+import{ AJFooter as Footer }  from '../components/Footer';
+import { 
+    Row, 
     Col, 
-    Menu,
     Layout
 } from 'antd';
-
 import "../static/public/styles/main_react.css";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 export class Home extends React.Component{
 
     render(){
         return(
             <Layout className="layout" >
-                <Masthead page="Home" />
+                <Masthead 
+                    page="Home"
+                />
                 <Content style={{ padding: '0 50px' }}>
                     <Row>
                         <Col span={4}>col-8</Col>
@@ -26,7 +26,7 @@ export class Home extends React.Component{
                     </Row>
 
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                <Footer />
             </Layout>
         )
     }

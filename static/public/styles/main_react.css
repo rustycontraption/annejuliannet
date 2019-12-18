@@ -89,6 +89,7 @@ li {
 */
 
 .ant-menu {
+  background-color: transparent;
   font-size: 1rem;
   font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight:800;
@@ -98,12 +99,11 @@ li {
   float: right;
   margin-bottom: 0;
   padding-left: 0;
-  background-color: transparent;
+  
   list-style: none;
   outline: none;
-  color: #fff;
+  text-transform:uppercase;
 }
-
 
 .ant-layout-header {
   line-height: 64px;
@@ -113,10 +113,18 @@ li {
   position:relative;
 }
 
-.ant-layout-content {
+.ant-layout {
   background-color: transparent;
 
 }
+
+.ant-layout-footer {
+  background-color: transparent;
+  text-align: center;
+  color: #888;
+}
+
+
 .masthead {
     top:0;
     left:0;
@@ -126,6 +134,8 @@ li {
     background-size: cover;
     background-position: center;
 }
+
+
 
 
 
