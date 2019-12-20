@@ -1,15 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import { Router, Route } from 'react-router'
 import { 
-    Row, 
-    Col, 
-    Menu,
     Layout,
-    Drawer,
-    Button,
-    Icon
 } from 'antd';
 
 // Navbar import must end in .tsx even though vscode complains about it
@@ -53,7 +45,6 @@ const Subtitle = styled.h1`
     color:#fff;  
     font-family: 'Raleway', sans-serif;
     margin:0;
-
 `
 
 interface MastheadProps {
@@ -76,9 +67,12 @@ export class Masthead extends React.Component<MastheadProps>{
 
    render(){
        return(
-            <div 
+            <div className="masthead"
                 style={{
                     backgroundImage: this.mastheadBg(),
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
                 }}
             >
                 <Overlay>

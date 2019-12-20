@@ -1,53 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import { Router, Route } from 'react-router'
-import ccreateBrowserHistory from 'history/createBrowserHistory'
-import { Row, 
-    Col, 
-    Menu,
-    Layout
-} from 'antd';
+import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from 'react-router-dom'
+import "../static/public/styles/main_react.css";
+import { App } from '../static/App'
 
-import { Home } from '../components/Home'
 
-import "./public/styles/main_react.css";
-import { createBrowserHistory } from 'history';
-
-const newHistory = createBrowserHistory();
-
-interface AppState {
-     isLoading: boolean;
-     showModal: string;
-     error: boolean;
+interface MatchParams {
+    page: string;
 }
 
-class App extends React.Component<{}, AppState> {
-    constructor(props) {
-		super(props)
-		
-		this.state = {
-			isLoading: true,
-			showModal: '0',
-			error: false,
-		};
-    }
+interface MatchProps extends RouteComponentProps<MatchParams>{}
 
+
+export class Routes extends React.Component<MatchProps,{}>{
     render(){
         return(
-            <Router history={newHistory}>
-                <div>
-                    <Route exact path='/' component={Home} />
-                </div>
-
-            </Router>
-            
-      
-        )
-    }
+            <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/" render={() => <App page="home" />} />
+                    <Route path="/:page" render={( {match}: MatchProps) => (
+                        <App page={match.params.page} /> )} />
+                </Switch>
+            </div>
+        </Router>
+    )}
 }
 
-ReactDOM.render(<App />, document.getElementById('content'));
-
-
-
+ReactDOM.render(<Routes />,document.getElementById("content"))

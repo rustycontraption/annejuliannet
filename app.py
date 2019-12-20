@@ -2,7 +2,7 @@ import json
 import requests
 from flask_s3 import FlaskS3
 from urllib.parse import urlparse
-from flask import Flask, Response, render_template, redirect, session, request, g, url_for, jsonify
+from flask import Flask, Response, render_template, redirect, session, request, g, url_for, jsonify, Blueprint
 
 from gevent.pywsgi import WSGIServer
 
@@ -11,16 +11,18 @@ app.config['FLASKS3_BUCKET_NAME'] = 'annejulian.net'
 app.config['FLASKS3_CDN_DOMAIN'] = 'static.annejulian.net'
 #app.config['FLASKS3_URL_STYLE'] = 'path'
 s3 = FlaskS3(app)
-     
 
-@app.route('/')
-def index():
+
+@app.route('/', defaults={ 'path': ''})
+@app.route('/<path:path>/')
+def test(path):
      return render_template(
-          #   "index.html",
-            "index_react.html",
-            heading="projects",
-            subheading="build, break, fix, repeat",
-        )
+          "index_react.html",
+          path=path
+       
+     )
+
+
 
 @app.route('/dive')
 def dive():

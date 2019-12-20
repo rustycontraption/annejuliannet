@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
 import { 
     Row, 
     Col, 
@@ -41,12 +39,12 @@ const desktop = {
 
 const menu = (style) => (
     <Menu style={style}>
-        <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+        <Menu.Item key="1"></Menu.Item>
         <SubMenu title="Projects">
-            <Menu.Item><Link to ="/dive">D.I.V.E.</Link></Menu.Item>
-            <Menu.Item><Link to="/rabbit">Rabbit</Link></Menu.Item>
-            <Menu.Item><Link to="/gs750">GS750</Link></Menu.Item>
-            <Menu.Item><Link to="/miniped">Miniped</Link></Menu.Item>
+            <Menu.Item>D.I.V.E.</Menu.Item>
+            <Menu.Item>Rabbit</Menu.Item>
+            <Menu.Item>GS750</Menu.Item>
+            <Menu.Item>Miniped</Menu.Item>
         </SubMenu>
         <Menu.Item key="3">About</Menu.Item>
         <Menu.Item key="4">Contact</Menu.Item>
@@ -58,12 +56,11 @@ class DesktopNav extends React.Component{
     render(){
         return(
             <Menu mode="horizontal" style={desktop}>
-                <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+                <Menu.Item key="1">Home</Menu.Item>
                 <Menu.Item key="2">Projects</Menu.Item>
                 <Menu.Item key="3">About</Menu.Item>
                 <Menu.Item key="4">Contact</Menu.Item>
              </Menu>
-            
         )
     }
 }
@@ -79,7 +76,7 @@ class MobileNav extends React.Component{
             }} 
             >
                 <Dropdown overlay={menu(mobile)} trigger={['click']}>
-                    <a className="ant-dropdown-Link" href="#">
+                    <a className="ant-dropdow-link" href="#">
                         <Icon 
                             type="menu-unfold"
                             style={{
@@ -111,9 +108,10 @@ const Navbar = () => {
                     <Brand style={style(width)}> Anne Julian</Brand>
                 </Col>
                 <Col span={12} >
-                    {width < 768 
-                        ? <MobileNav />
-                        : <DesktopNav />
+                    {
+                        width < 768 
+                            ? <MobileNav />
+                            : <DesktopNav />
                     }
                 </Col>
             </Row>
