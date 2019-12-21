@@ -26,7 +26,7 @@ const Overlay = styled(Header)`
 
 const Heading = styled.div`
     text-align:center;
-    padding: 6rem 0px 7rem 0;
+    padding: 7rem 0px 7rem 0;
     margin:0;
 `
 
@@ -54,7 +54,7 @@ interface MastheadProps {
 
 }
 
-export class Masthead extends React.Component<MastheadProps>{
+export class Masthead extends React.Component<MastheadProps, any>{
     constructor(props: MastheadProps) {
 		super(props)
     }
@@ -76,7 +76,7 @@ export class Masthead extends React.Component<MastheadProps>{
                 }}
             >
                 <Overlay>
-                    <Navbar />
+                    {/* <Navbar /> */}
                     <Heading>
                         <Title>{this.props.title}</Title>
                         <Subtitle>{this.props.subtitle}</Subtitle>

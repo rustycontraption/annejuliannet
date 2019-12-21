@@ -1,5 +1,8 @@
 import React from 'react';
+import { BrowserRouter as NavLink, Link } from 'react-router-dom'
+
 import styled from 'styled-components';
+import "../static/public/styles/main_react.css";
 import { 
     Row, 
     Col, 
@@ -20,11 +23,20 @@ const Brand = styled.h1 `
     font-size: 1.5rem;
     font-weight:800;
     letter-spacing:1px;
+    
 
     padding-left: 1.5rem;
     margin: 0;
+    white-space: nowrap;
 
     float:left;
+`
+
+const TopBar = styled(Row)`
+    position: absolute;
+    width:100%;
+    z-index:10;
+    height:3rem;
 `
 
 const mobile = {
@@ -39,15 +51,15 @@ const desktop = {
 
 const menu = (style) => (
     <Menu style={style}>
-        <Menu.Item key="1"></Menu.Item>
+        <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
         <SubMenu title="Projects">
-            <Menu.Item>D.I.V.E.</Menu.Item>
-            <Menu.Item>Rabbit</Menu.Item>
-            <Menu.Item>GS750</Menu.Item>
-            <Menu.Item>Miniped</Menu.Item>
+            <Menu.Item><Link to="/dive">D.I.V.E.</Link></Menu.Item>
+            <Menu.Item><Link to="/rabbit">rabbit</Link></Menu.Item>
+            <Menu.Item><Link to="/gs750">gs750</Link></Menu.Item>
+            <Menu.Item><Link to ="/miniped">miniped</Link></Menu.Item>
         </SubMenu>
-        <Menu.Item key="3">About</Menu.Item>
-        <Menu.Item key="4">Contact</Menu.Item>
+            <Menu.Item key="3"><Link to="/about">about</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/contact">contact</Link></Menu.Item>
     </Menu>
 )
 
@@ -56,15 +68,19 @@ class DesktopNav extends React.Component{
     render(){
         return(
             <Menu mode="horizontal" style={desktop}>
-                <Menu.Item key="1">Home</Menu.Item>
-                <Menu.Item key="2">Projects</Menu.Item>
-                <Menu.Item key="3">About</Menu.Item>
-                <Menu.Item key="4">Contact</Menu.Item>
+                <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+                <SubMenu title="Projects">
+                    <Menu.Item><Link to="/dive">D.I.V.E.</Link></Menu.Item>
+                    <Menu.Item><Link to="/rabbit">rabbit</Link></Menu.Item>
+                    <Menu.Item><Link to="/gs750">gs750</Link></Menu.Item>
+                    <Menu.Item><Link to ="/miniped">miniped</Link></Menu.Item>
+                </SubMenu>
+                <Menu.Item key="3"><Link to="/about">about</Link></Menu.Item>
+                <Menu.Item key="4"><Link to="/contact">contact</Link></Menu.Item>
              </Menu>
         )
     }
 }
-
 
 class MobileNav extends React.Component{
     
@@ -76,7 +92,7 @@ class MobileNav extends React.Component{
             }} 
             >
                 <Dropdown overlay={menu(mobile)} trigger={['click']}>
-                    <a className="ant-dropdow-link" href="#">
+                    <a className="ant-dropdown-link" href="#">
                         <Icon 
                             type="menu-unfold"
                             style={{
@@ -102,20 +118,19 @@ const Navbar = () => {
     }
 
     return(
-        <React.Fragment>
-            <Row type="flex" align="middle" style={style(width)}>
+            <TopBar type="flex" align="middle" style={style(width)}>
                 <Col span={12}>
                     <Brand style={style(width)}> Anne Julian</Brand>
                 </Col>
                 <Col span={12} >
-                    {
+                {
                         width < 768 
                             ? <MobileNav />
                             : <DesktopNav />
                     }
+
                 </Col>
-            </Row>
-        </React.Fragment>
+            </TopBar>
     )
 }
 

@@ -105,6 +105,12 @@ li {
   text-transform:uppercase;
 }
 
+.ant-menu-submenu {
+  margin-bottom:0;
+  padding-bottom:0;
+  vertical-align: center;
+}
+
 .ant-menu-horizontal {
   border-bottom: transparent;
   vertical-align: middle;
@@ -126,7 +132,8 @@ li {
   color: #fff
 }
 
-.ant-menu-horizontal > .ant-menu-item > a:hover{
+.ant-menu-horizontal > .ant-menu-item > a:hover,
+.ant-menu-horizontal > .ant-menu-submenu > a:hover{
   color: #aaa;
 }
 
