@@ -66,7 +66,6 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
     }
 
     componentDidMount(){
-        console.log("gallery mount",this.props.page)
         this.fetchGallery()
         this.setState({
             s3: 'https://static.annejulian.net/static/img/' + this.props.page + '/',
@@ -75,8 +74,8 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
     }
 
     componentDidUpdate(){
-        console.log("gallery update", this.props.page)
         if(this.state.pageTracker != this.props.page){
+            this.fetchGallery()
             this.setState({
                 s3: 'https://static.annejulian.net/static/img/' + this.props.page + '/',
                 pageTracker: this.props.page
