@@ -1,19 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from 'react-router-dom'
-
-
 import { App } from '../static/App.tsx'
-import { Masthead } from '../components/Masthead';
-import{ AJFooter as Footer }  from '../components/Footer';
-
 import { 
-    Row, 
-    Col, 
     Layout
 } from 'antd';
-const { Content } = Layout;
 
+import "../static/public/styles/lightbox.css"; 
 import "../static/public/styles/main_react.css";
 
 

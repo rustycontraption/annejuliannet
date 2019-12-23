@@ -1,6 +1,7 @@
 import React from 'react';
 import { Masthead } from '../components/Masthead';
 import Navbar from '../components/Navbar'
+import Gallery from '../components/Gallery'
 import{ AJFooter as Footer }  from '../components/Footer';
 import { 
     Row, 
@@ -50,12 +51,11 @@ export class App extends React.Component<Props,{}>{
                     title={Title[page]}
                     subtitle={Subtitle[page]}
                 />
-                   
                 <Content style={{ padding: '0 50px' }}>
                     <Row>
                         <Col span={4}></Col>
                         <Col span={16} style={{background:'blue'}}>
-
+                            <Gallery page={page} />
                         </Col>
                         <Col span={4}></Col>
                     </Row>

@@ -58,8 +58,8 @@ const menu = (style) => (
             <Menu.Item><Link to="/gs750">gs750</Link></Menu.Item>
             <Menu.Item><Link to ="/miniped">miniped</Link></Menu.Item>
         </SubMenu>
-            <Menu.Item key="3"><Link to="/about">about</Link></Menu.Item>
-            <Menu.Item key="4"><Link to="/contact">contact</Link></Menu.Item>
+        <Menu.Item key="3"><Link to="/about">about</Link></Menu.Item>
+        <Menu.Item key="4"><Link to="/contact">contact</Link></Menu.Item>
     </Menu>
 )
 
