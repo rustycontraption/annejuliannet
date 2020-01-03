@@ -72,11 +72,11 @@ export class Masthead extends React.Component<MastheadProps, any>{
                     backgroundImage: this.mastheadBg(),
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundPosition: 'center',
+                    marginBottom: '2rem'
                 }}
             >
                 <Overlay>
-                    {/* <Navbar /> */}
                     <Heading>
                         <Title>{this.props.title}</Title>
                         <Subtitle>{this.props.subtitle}</Subtitle>

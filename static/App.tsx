@@ -10,8 +10,6 @@ import {
 } from 'antd';
 import "../static/public/styles/main_react.css";
 
-const s3 = 'https://static.annejulian.net/static/img/'
-
 const { Content } = Layout;
 
 interface Props{
@@ -54,7 +52,7 @@ export class App extends React.Component<Props,{}>{
                 <Content style={{ padding: '0 50px' }}>
                     <Row>
                         <Col span={4}></Col>
-                        <Col span={16} style={{background:'blue'}}>
+                        <Col span={16}>
                             <Gallery page={page} />
                         </Col>
                         <Col span={4}></Col>

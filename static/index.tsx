@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from 'react-router-dom'
 import { App } from '../static/App.tsx'
-import { 
-    Layout
-} from 'antd';
-
 import "../static/public/styles/lightbox.css"; 
 import "../static/public/styles/main_react.css";
 

@@ -1,5 +1,26 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
+import styled from 'styled-components';
+
+const GalleryContainer = styled.div`
+    width:90%
+    display: block;
+    position: relative;
+    margin: auto;
+`
+
+const ImgThumb = styled.img`
+    border: 1px solid #555;
+    margin: .3rem;
+    padding: 0px;
+`
+
+const GalleryButton = styled.button`
+    border: none;
+    padding: 0px;
+    background: none;
+    margin: 0px;
+`
 
 interface LightboxProps {
     page: string;
@@ -95,6 +116,11 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
 	}
 
     // Gallery image sources
+    thumbnailSrc(thumbnail){
+        return (
+            this.state.s3 + thumbnail.name + '_sm.jpg'
+        )
+    }
     mainSrc(){
         return(
             this.state.s3 + this.state.images[this.state.photoIndex].name + '.jpg'
@@ -134,10 +160,20 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
         }
 
         return (
-            <React.Fragment>            
-                <button type="button" onClick={() => this.setState({ isOpen: true })}>
-                    Open Lightbox
-                </button>
+            <GalleryContainer>            
+                            
+                    {this.state.images.map((thumbnail, index) => (
+                        <GalleryButton key={index} onClick={() => 
+                            this.setState({ 
+                                isOpen: true,
+                                photoIndex: index
+                            })}
+                        >
+                            <ImgThumb src={this.thumbnailSrc(thumbnail)} />
+                        </GalleryButton>
+                        )
+                    )}
+            
 
                 {this.state.isOpen && (
                     <Lightbox
@@ -145,25 +181,6 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
                         nextSrc={this.nextSrc()}
                         prevSrc={this.prevSrc()}
                         enableZoom={false}
-                        reactModalStyle={{
-                    
-                            boxSizing: 'border-box',
-                            padding: 0,
-                            color: 'rgba(0, 0, 0, 0.65)',
-                            fontSize: '14px',
-                            fontVariant: 'tabular-nums',
-                            lineHeight: 1.5,
-                            listStyle: 'none',
-                            position: 'relative',
-                            top: '100px',
-                            width: 'auto',
-                            margin: '0 auto',
-                            paddingBottom: '24px',
-                            pointerEvents: 'none'
-                            
-                            
-
-                        }}
                         onCloseRequest={() => this.setState({ isOpen: false })}
                         onMovePrevRequest={() =>
                             this.setState({
@@ -177,7 +194,7 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
                         }
                     />
                 )}
-            </React.Fragment> 
+            </GalleryContainer> 
         );
     }
   }

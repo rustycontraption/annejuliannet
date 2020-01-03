@@ -91,13 +91,11 @@ li {
 .grid-prev{
   text-align:left;
   grid-column: 1;
- 
 }
 
 .grid-home{
   text-align: center;
   grid-column: 2;
-  
 }
 
 .grid-next{
