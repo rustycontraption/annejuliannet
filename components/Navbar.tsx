@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as NavLink, Link } from 'react-router-dom'
 
 import styled from 'styled-components';
-import "../static/public/styles/main_react.css";
 import { 
     Row, 
     Col, 
@@ -13,8 +12,6 @@ import {
 
 import useWindowDimensions from '../components/Utils.tsx'
 
-import "../static/public/styles/main_react.css";
-
 const { SubMenu } = Menu;
 
 const Brand = styled.h1 `
@@ -24,7 +21,6 @@ const Brand = styled.h1 `
     font-weight:800;
     letter-spacing:1px;
     
-
     padding-left: 1.5rem;
     margin: 0;
     white-space: nowrap;
@@ -37,6 +33,9 @@ const TopBar = styled(Row)`
     width:100%;
     z-index:10;
     height:3rem;
+`
+const ProjectsMenu = styled(SubMenu)`
+
 `
 
 const mobile = {

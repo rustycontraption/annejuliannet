@@ -8,7 +8,6 @@ import {
     Col, 
     Layout
 } from 'antd';
-import "../static/public/styles/main_react.css";
 
 const { Content } = Layout;
 

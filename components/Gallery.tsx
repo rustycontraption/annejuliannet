@@ -180,6 +180,7 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
                         mainSrc={this.mainSrc()}
                         nextSrc={this.nextSrc()}
                         prevSrc={this.prevSrc()}
+                        imageCaption={this.state.images[this.state.photoIndex].details}
                         enableZoom={false}
                         onCloseRequest={() => this.setState({ isOpen: false })}
                         onMovePrevRequest={() =>

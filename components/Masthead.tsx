@@ -4,13 +4,6 @@ import {
     Layout,
 } from 'antd';
 
-// Navbar import must end in .tsx even though vscode complains about it
-import Navbar from '../components/Navbar.tsx'
-
-import "../static/public/styles/main_react.css";
-
-import useWindowDimensions from '../components/Utils.tsx'
-
 const { Header } = Layout;
 
 const s3 = 'https://static.annejulian.net/static/img/'
