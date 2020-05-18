@@ -42,6 +42,19 @@ interface LightboxState{
     pageTracker: string;
 }
 
+class ProjectList extends React.Component<> {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <p>dev</p>
+        )
+
+    }
+}
+
 export default class Gallery extends React.Component<LightboxProps, LightboxState> {
     constructor(props) {
       super(props);
@@ -59,30 +72,37 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
     }
 
     fetchGallery(){
-        fetch(`/get_gallery?page=${this.props.page}`, {
-            method: 'GET',
-            dataType:'json',
-        })
-        .then(res => {
-            if (res.status != 200){
-                this.setState({
-                    error: true,
-                    isLoading: false,
-                    images: []
-                })
-            } else {
-                this.setState({
-                    error: false
-                })
-            }
-
-            return res.json()
-        })
-        .then(data => {
-            this.setState({
-                images: data,
-                isLoading: false
+        if (this.props.page != "home") {
+            fetch(`/get_gallery?page=${this.props.page}`, {
+                method: 'GET',
+                dataType:'json',
             })
+            .then(res => {
+                if (res.status != 200){
+                    this.setState({
+                        error: true,
+                        isLoading: false,
+                        images: []
+                    })
+                } else {
+                    this.setState({
+                        error: false
+                    })
+                }
+
+                return res.json()
+            })
+            .then(data => {
+                this.setState({
+                    images: data,
+                    isLoading: false
+                })
+            })
+        }
+
+        this.setState({
+            error: false,
+            isLoading: false
         })
     }
 
@@ -127,6 +147,7 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
         )
     }
 
+
     nextSrc(){
       
         return(
@@ -146,6 +167,7 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
         )
     }
     
+
     render() {
         if (this.state.isLoading){
             return(
@@ -159,43 +181,49 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
             )
         }
 
-        return (
-            <GalleryContainer>            
-                            
-                    {this.state.images.map((thumbnail, index) => (
-                        <GalleryButton key={index} onClick={() => 
-                            this.setState({ 
-                                isOpen: true,
-                                photoIndex: index
-                            })}
-                        >
-                            <ImgThumb src={this.thumbnailSrc(thumbnail)} />
-                        </GalleryButton>
-                        )
-                    )}
-            
+        const page = this.props.page;
 
-                {this.state.isOpen && (
-                    <Lightbox
-                        mainSrc={this.mainSrc()}
-                        nextSrc={this.nextSrc()}
-                        prevSrc={this.prevSrc()}
-                        imageCaption={this.state.images[this.state.photoIndex].details}
-                        enableZoom={false}
-                        onCloseRequest={() => this.setState({ isOpen: false })}
-                        onMovePrevRequest={() =>
-                            this.setState({
-                            photoIndex: (this.state.photoIndex + this.state.images.length - 1) % this.state.images.length,
-                            })
-                        }
-                        onMoveNextRequest={() =>
-                            this.setState({
-                            photoIndex: (this.state.photoIndex + 1) % this.state.images.length,
-                            })
-                        }
-                    />
-                )}
-            </GalleryContainer> 
+        return (
+            <React.Fragment>
+                {
+                    page == "home"
+                        ? <p>Hello</p>
+                        : <GalleryContainer>                     
+                            {this.state.images.map((thumbnail, index) => (
+                                <GalleryButton key={index} onClick={() => 
+                                    this.setState({ 
+                                        isOpen: true,
+                                        photoIndex: index
+                                    })}
+                                >
+                                    <ImgThumb src={this.thumbnailSrc(thumbnail)} />
+                                </GalleryButton>
+                                )
+                            )}
+                        
+                            {this.state.isOpen && (
+                                <Lightbox
+                                    mainSrc={this.mainSrc()}
+                                    nextSrc={this.nextSrc()}
+                                    prevSrc={this.prevSrc()}
+                                    imageCaption={this.state.images[this.state.photoIndex].details}
+                                    enableZoom={false}
+                                    onCloseRequest={() => this.setState({ isOpen: false })}
+                                    onMovePrevRequest={() =>
+                                        this.setState({
+                                        photoIndex: (this.state.photoIndex + this.state.images.length - 1) % this.state.images.length,
+                                        })
+                                    }
+                                    onMoveNextRequest={() =>
+                                        this.setState({
+                                        photoIndex: (this.state.photoIndex + 1) % this.state.images.length,
+                                        })
+                                    }
+                                />
+                            )}
+                        </GalleryContainer> 
+                }
+            </React.Fragment>
         );
     }
   }
