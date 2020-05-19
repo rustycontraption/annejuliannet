@@ -1,6 +1,8 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import styled from 'styled-components';
+import { Row, Col } from 'antd';
+import { BrowserRouter as Navlink, Link } from 'react-router-dom'
 
 const GalleryContainer = styled.div`
     width:90%
@@ -20,6 +22,22 @@ const GalleryButton = styled.button`
     padding: 0px;
     background: none;
     margin: 0px;
+`
+
+const PostTitle = styled.h1`
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #bcbcbc;
+    font-family: 'Raleway', sans-serif;
+`
+
+const PostDetails = styled.p`
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.3;
+    color: #bcbcbc;
+    font-family: 'Raleway', sans-serif;
 `
 
 interface LightboxProps {
@@ -42,16 +60,63 @@ interface LightboxState{
     pageTracker: string;
 }
 
-class ProjectList extends React.Component<> {
+const ProjectPreview = (props) => {
+        return(
+            <Link to={props.page}>
+                <Row 
+                    gutter={4}
+                    type="flex"
+                    style={{ 
+                        justifyContent: "top",
+                        paddingTop: "1rem" 
+                    }}
+                >
+                    <Col span={16} align-content="top">
+                        <PostTitle>{props.title}</PostTitle>
+                        <PostDetails>{props.details}</PostDetails>
+                    </Col>
+                    <Col span={4}><img src={props.thumbnail} /></Col>
+                </Row>
+            </Link>
+        )
+    }
+
+class ProjectList extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return(
-            <p>dev</p>
+            <React.Fragment>
+                <ProjectPreview 
+                    title = { "mini moped" }
+                    thumbnail = { "https://static.annejulian.net/static/img/dive/DIVEcam8_sm.jpg" }
+                    details = { "Slovenian moped motor in a Chinese pitbike frame with American electronics, rolling on Japanese tires" }
+                    page = { "/miniped" }
+                />
+                <hr />
+                <ProjectPreview 
+                    title = { "D.I.V.E." }
+                    thumbnail = { "https://static.annejulian.net/static/img/dive/DIVEcam8_sm.jpg" }
+                    details = { "24/7 underwater live stream built from webcams, PVC pipes, and spare parts" }
+                    page = { "/dive" }
+                />
+                <hr />
+                <ProjectPreview
+                    title = { "1981 VW Rabbit" }
+                    thumbnail = { "https://static.annejulian.net/static/img/rabbit/rabbit_sm.jpg" }
+                    details = { "project car, daily driven" }
+                    page = { "/rabbit" }
+                />
+                <hr />
+                <ProjectPreview
+                    title = { "1982 Suzuki GS750T" }
+                    thumbnail = { "https://static.annejulian.net/static/img/gs750/gs750_sm.jpg" }
+                    details = { "a mediocre bike with potential" }
+                />
+            </React.Fragment>
         )
-
     }
 }
 
@@ -187,7 +252,7 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
             <React.Fragment>
                 {
                     page == "home"
-                        ? <p>Hello</p>
+                        ? <ProjectList />
                         : <GalleryContainer>                     
                             {this.state.images.map((thumbnail, index) => (
                                 <GalleryButton key={index} onClick={() => 
