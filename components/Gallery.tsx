@@ -92,7 +92,7 @@ class ProjectList extends React.Component {
                 <ProjectPreview 
                     title = { "mini moped" }
                     thumbnail = { "https://static.annejulian.net/static/img/dive/DIVEcam8_sm.jpg" }
-                    details = { "Slovenian moped motor in a Chinese pitbike frame with American electronics, rolling on Japanese tires" }
+                    details = { "probably a bad idea" }
                     page = { "/miniped" }
                 />
                 <hr />
