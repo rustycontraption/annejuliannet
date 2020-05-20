@@ -24,8 +24,8 @@ const Title = {
 }
 
 const Subtitle = {
-    home: "build,break,fix,repeat",
-    rabbit: "engine swap",
+    home: "build, break, fix, repeat",
+    rabbit: "project car, daily driven",
     gs750: "brat conversion",
     miniped: "probably a bad idea",
     dive: "marine 24/7 livestream"
