@@ -9,7 +9,7 @@ export class AJFooter extends React.Component{
 
     render(){
         return(
-            <Footer>Anne Julian ©2019</Footer>
+            <Footer>Anne Julian ©2020</Footer>
             
         )
     }
