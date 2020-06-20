@@ -2,6 +2,7 @@ import React from 'react';
 import { Masthead } from '../components/Masthead';
 import Navbar from '../components/Navbar'
 import Gallery from '../components/Gallery'
+import ProjectList from '../components/ProjectList'
 import{ AJFooter as Footer }  from '../components/Footer';
 import { 
     Row, 
@@ -20,7 +21,9 @@ const Title = {
     rabbit: "rabbit",
     gs750: "gs750",
     miniped: "miniped",
-    dive: "d.i.v.e."
+    dive: "d.i.v.e.",
+    about: "about",
+    contact: "contact"
 }
 
 const Subtitle = {
@@ -28,7 +31,9 @@ const Subtitle = {
     rabbit: "project car, daily driven",
     gs750: "brat conversion",
     miniped: "probably a bad idea",
-    dive: "marine 24/7 livestream"
+    dive: "marine 24/7 livestream",
+    about: " ",
+    contact: " "
 }
 
 export class App extends React.Component<Props,{}>{
@@ -36,7 +41,25 @@ export class App extends React.Component<Props,{}>{
     constructor(props: Props){
         super(props) 
     }
- 
+
+    pageContent(page){
+        if (page == "home") {
+            return (
+                <ProjectList />    
+            )
+        }
+
+        if (page == "contact") {
+            return (
+                <p>contact</p>
+            )
+        }
+
+        return (
+            <Gallery page={page} />
+        )  
+    }
+    
     render(){
         const {page} = this.props
         console.log(page)
@@ -52,7 +75,7 @@ export class App extends React.Component<Props,{}>{
                     <Row>
                         <Col span={4}></Col>
                         <Col span={16}>
-                            <Gallery page={page} />
+                            {this.pageContent(page)}
                         </Col>
                         <Col span={4}></Col>
                     </Row>
