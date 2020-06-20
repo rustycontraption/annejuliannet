@@ -24,17 +24,18 @@ def get_gallery():
                {"name":"throttlecable","details":"FUN FACT: I now carry a fire extinguisher in the car after the machine screws holding the carb together backed out, the top half of the carb separated from the bottom half, and the whole thing caught on fire."},
                {"name":"pulley","details":""},
                {"name":"sketching","details":""},
-               {"name":"fusebox","details":"FUN FACT: I wired the first ignition coil wrong and it exploded.  The coil pictured is a second one I had lying around my garage."},
+               {"name":"fusebox","details":"FUN FACT: I wired the first ignition coil wrong and it exploded."},
                {"name":"fuelpump","details":""},
                {"name":"regulator","details":""},
           ],
           'miniped':[
                {"name":"pitbike","details":"The pitbike soon after I got it.  It was in pretty bad shape."},
-               {"name":"mountMockup","details":"I designed some engine mounting adapters in Fusion 360 and 3D printed them to test fitment."},
+               {"name":"mountMockup","details":"I designed some motor mounts in Fusion 360 and 3D printed them to test fitment."},
                {"name":"bits","details":"Transmission bits all cleaned and ready to be put back together."},
-               {"name":"pedTrans","details":"The <i>first</i> time I almost had everything back together..."},
-               {"name":"exhaust","details":"Version 1.  The flange leaked so I ultimately had to hack it off and replace it with an actual Tomos exhaust header."},
-               {"name":"protoSprocket","details":"I slapped together this atrocity so I could ride the bike up and down the block the very first time I got everything together, just to see if it worked well enough to continue the project.  The original pit bike sprocket was too big, and spaced incorrectly to line up with the Tomos front sprocket."},
+               {"name":"pedTrans","details":"Transmission bits installed.  Also, steel motor mounts I cut out with a plasma cutter."},
+               {"name":"exhaust","details":""},
+               {"name":"protoSprocket","details":"Prototype and finished rear sprocket."},
+               
           ],
           'dive':[
                {"name":"DIVEcam6","details":""},
@@ -56,26 +57,11 @@ def get_gallery():
                {"name":"standoffs","details":""},
                {"name":"tray","details":""},
                {"name":"fusebox","details":""}
-          ]
+          ],
+          'about':[]
      }
 
      return (jsonify(gallery[page]), 200, {'Content-Type':'application/json'})
-
-# @app.route('/about')
-# def about():
-#      return render_template(
-#            "about.html",
-#            heading="about",
-#            subheading="..."
-#      )
-
-# @app.route('/contact')
-# def contact():
-#      return render_template(
-#            "contact.html",
-#            heading="contact",
-#            subheading="..."
-#      )
 
 if __name__ == '__main__':
      app.run(debug=True)
