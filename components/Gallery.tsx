@@ -24,22 +24,6 @@ const GalleryButton = styled.button`
     margin: 0px;
 `
 
-const PostTitle = styled.h1`
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.3;
-    color: #bcbcbc;
-    font-family: 'Raleway', sans-serif;
-`
-
-const PostDetails = styled.p`
-    font-size: 1.3rem;
-    font-weight: 300;
-    line-height: 1.3;
-    color: #bcbcbc;
-    font-family: 'Raleway', sans-serif;
-`
-
 interface LightboxProps {
     page: string;
 }
@@ -58,66 +42,6 @@ interface LightboxState{
     s3: string;
     showModal: string;
     pageTracker: string;
-}
-
-const ProjectPreview = (props) => {
-        return(
-            <Link to={props.page}>
-                <Row 
-                    gutter={4}
-                    type="flex"
-                    style={{ 
-                        justifyContent: "top",
-                        paddingTop: "1rem" 
-                    }}
-                >
-                    <Col span={16} align-content="top">
-                        <PostTitle>{props.title}</PostTitle>
-                        <PostDetails>{props.details}</PostDetails>
-                    </Col>
-                    <Col span={4}><img src={props.thumbnail} /></Col>
-                </Row>
-            </Link>
-        )
-    }
-
-class ProjectList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return(
-            <React.Fragment>
-                <ProjectPreview 
-                    title = { "mini moped" }
-                    thumbnail = { "https://static.annejulian.net/static/img/dive/DIVEcam8_sm.jpg" }
-                    details = { "probably a bad idea" }
-                    page = { "/miniped" }
-                />
-                <hr />
-                <ProjectPreview 
-                    title = { "D.I.V.E." }
-                    thumbnail = { "https://static.annejulian.net/static/img/dive/DIVEcam8_sm.jpg" }
-                    details = { "24/7 underwater live stream built from webcams, PVC pipes, and spare parts" }
-                    page = { "/dive" }
-                />
-                <hr />
-                <ProjectPreview
-                    title = { "1981 VW Rabbit" }
-                    thumbnail = { "https://static.annejulian.net/static/img/rabbit/rabbit_sm.jpg" }
-                    details = { "project car, daily driven" }
-                    page = { "/rabbit" }
-                />
-                <hr />
-                <ProjectPreview
-                    title = { "1982 Suzuki GS750T" }
-                    thumbnail = { "https://static.annejulian.net/static/img/gs750/gs750_sm.jpg" }
-                    details = { "a mediocre bike with potential" }
-                />
-            </React.Fragment>
-        )
-    }
 }
 
 export default class Gallery extends React.Component<LightboxProps, LightboxState> {
@@ -212,7 +136,6 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
         )
     }
 
-
     nextSrc(){
       
         return(
@@ -232,7 +155,6 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
         )
     }
     
-
     render() {
         if (this.state.isLoading){
             return(
@@ -249,46 +171,40 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
         const page = this.props.page;
 
         return (
-            <React.Fragment>
-                {
-                    page == "home"
-                        ? <ProjectList />
-                        : <GalleryContainer>                     
-                            {this.state.images.map((thumbnail, index) => (
-                                <GalleryButton key={index} onClick={() => 
-                                    this.setState({ 
-                                        isOpen: true,
-                                        photoIndex: index
-                                    })}
-                                >
-                                    <ImgThumb src={this.thumbnailSrc(thumbnail)} />
-                                </GalleryButton>
-                                )
-                            )}
-                        
-                            {this.state.isOpen && (
-                                <Lightbox
-                                    mainSrc={this.mainSrc()}
-                                    nextSrc={this.nextSrc()}
-                                    prevSrc={this.prevSrc()}
-                                    imageCaption={this.state.images[this.state.photoIndex].details}
-                                    enableZoom={false}
-                                    onCloseRequest={() => this.setState({ isOpen: false })}
-                                    onMovePrevRequest={() =>
-                                        this.setState({
-                                        photoIndex: (this.state.photoIndex + this.state.images.length - 1) % this.state.images.length,
-                                        })
-                                    }
-                                    onMoveNextRequest={() =>
-                                        this.setState({
-                                        photoIndex: (this.state.photoIndex + 1) % this.state.images.length,
-                                        })
-                                    }
-                                />
-                            )}
-                        </GalleryContainer> 
-                }
-            </React.Fragment>
+            <GalleryContainer>                     
+                {this.state.images.map((thumbnail, index) => (
+                    <GalleryButton key={index} onClick={() => 
+                        this.setState({ 
+                            isOpen: true,
+                            photoIndex: index
+                        })}
+                    >
+                        <ImgThumb src={this.thumbnailSrc(thumbnail)} />
+                    </GalleryButton>
+                    )
+                )}
+            
+                {this.state.isOpen && (
+                    <Lightbox
+                        mainSrc={this.mainSrc()}
+                        nextSrc={this.nextSrc()}
+                        prevSrc={this.prevSrc()}
+                        imageCaption={this.state.images[this.state.photoIndex].details}
+                        enableZoom={false}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                        onMovePrevRequest={() =>
+                            this.setState({
+                            photoIndex: (this.state.photoIndex + this.state.images.length - 1) % this.state.images.length,
+                            })
+                        }
+                        onMoveNextRequest={() =>
+                            this.setState({
+                            photoIndex: (this.state.photoIndex + 1) % this.state.images.length,
+                            })
+                        }
+                    />
+                )}
+            </GalleryContainer> 
         );
     }
   }
