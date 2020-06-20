@@ -56,7 +56,7 @@ export default class ProjectList extends React.Component {
             <React.Fragment>
                 <ProjectItem
                     title = { "mini moped" }
-                    thumbnail = { "https://static.annejulian.net/static/img/dive/DIVEcam8_sm.jpg" }
+                    thumbnail = { "https://static.annejulian.net/static/img/miniped/moab_sm.jpg" }
                     details = { "probably a bad idea" }
                     page = { "/miniped" }
                 />
