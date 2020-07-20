@@ -132,26 +132,26 @@ export default class Gallery extends React.Component<LightboxProps, LightboxStat
     }
     mainSrc(){
         return(
-            this.state.s3 + this.state.images[this.state.photoIndex].name + '.jpg'
+            this.state.s3 + this.state.images[this.state.photoIndex].name + '.png'
         )
     }
 
     nextSrc(){
       
         return(
-            this.state.s3 + this.state.images[(this.state.photoIndex + 1) % this.state.images.length].name + '.jpg'
+            this.state.s3 + this.state.images[(this.state.photoIndex + 1) % this.state.images.length].name + '.png'
         )
     }
 
     prevSrc(){
         if(this.state.photoIndex == 0){
             return(
-                this.state.s3 + this.state.images[this.state.images.length - 1].name + '.jpg'
+                this.state.s3 + this.state.images[this.state.images.length - 1].name + '.png'
             )
         }
 
         return(
-            this.state.s3 + this.state.images[(this.state.photoIndex - 1) % this.state.images.length].name + '.jpg'
+            this.state.s3 + this.state.images[(this.state.photoIndex - 1) % this.state.images.length].name + '.png'
         )
     }
     
