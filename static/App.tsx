@@ -3,6 +3,8 @@ import { Masthead } from '../components/Masthead';
 import Navbar from '../components/Navbar'
 import Gallery from '../components/Gallery'
 import ProjectList from '../components/ProjectList'
+import Contact from '../components/Contact'
+import About from '../components/About'
 import{ AJFooter as Footer }  from '../components/Footer';
 import { 
     Row, 
@@ -51,7 +53,13 @@ export class App extends React.Component<Props,{}>{
 
         if (page == "contact") {
             return (
-                <p>contact</p>
+                <Contact />
+            )
+        }
+
+        if (page == "about") {
+            return (
+                <About />
             )
         }
 
