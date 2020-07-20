@@ -23,8 +23,9 @@ class Routes extends React.Component<MatchProps, any>{
                 <Switch>
                     <Route exact path="/" render={() => <App page="home" />} />
                     <Route exact path="/contact" render={() => <App page="contact" />} />
+                    <Route exact path="/about" render={() => <App page="about" />} />
                     <Route exact path="/dev" render={() => <App page="home" />} />
-                    <Route path="/:page(rabbit|gs750|miniped|dive|about)" render={( {match}: MatchProps) => (
+                    <Route path="/:page(rabbit|gs750|miniped|dive)" render={( {match}: MatchProps) => (
                         <App page={match.params.page} /> )} />
                     <Route component={NotFound} />
                 </Switch>
