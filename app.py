@@ -1,10 +1,61 @@
 import json
 import requests
+import boto3
+import smtplib
+import email.utils
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from botocore.exceptions import ClientError
 from urllib.parse import urlparse
 from flask import Flask, Response, render_template, redirect, session, request, g, url_for, jsonify, Blueprint
 from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
+
+def get_smtp_creds():
+
+     # Get credentials for AWS SMTP from AWS Secrets Manager
+     region_name = "us-west-2"
+     secret_name = "smtp_creds"
+
+     session = boto3.session.Session(profile_name='annejulian')
+     client = session.client(
+          service_name='secretsmanager',
+          region_name=region_name
+     )
+
+     try:
+          get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+     except ClientError as e:
+          if e.response['Error']['Code'] == 'DecryptionFailureException':
+               # Secrets Manager can't decrypt the protected secret text using the provided KMS key.
+               # Deal with the exception here, and/or rethrow at your discretion.
+               raise e
+          elif e.response['Error']['Code'] == 'InternalServiceErrorException':
+               # An error occurred on the server side.
+               # Deal with the exception here, and/or rethrow at your discretion.
+               raise e
+          elif e.response['Error']['Code'] == 'InvalidParameterException':
+               # You provided an invalid value for a parameter.
+               # Deal with the exception here, and/or rethrow at your discretion.
+               raise e
+          elif e.response['Error']['Code'] == 'InvalidRequestException':
+               # You provided a parameter value that is not valid for the current state of the resource.
+               # Deal with the exception here, and/or rethrow at your discretion.
+               raise e
+          elif e.response['Error']['Code'] == 'ResourceNotFoundException':
+               # We can't find the resource that you asked for.
+               # Deal with the exception here, and/or rethrow at your discretion.
+               raise e
+     else:
+          # Decrypts secret using the associated KMS CMK.
+          # Depending on whether the secret is a string or binary, one of these fields will be populated.
+          if 'SecretString' in get_secret_value_response:
+               secret = get_secret_value_response['SecretString']
+          else:
+               secret = ""
+
+     return json.loads(secret)
 
 @app.route('/', defaults={ 'path': ''})
 @app.route('/<path:path>/')
@@ -13,6 +64,66 @@ def test(path):
           "index_react.html",
           path=path
      )
+
+@app.route('/make_contact', methods=['POST'])
+def make_contact():
+
+     creds = get_smtp_creds()
+     data = request.get_json()
+
+     SENDER = 'service@annejulian.net'
+     SENDERNAME = 'Service'
+     RECIPIENT = 'praxis@annejulian.net'
+     USERNAME_SMTP = creds['user']
+     PASSWORD_SMTP = creds['password']
+
+     HOST = "email-smtp.us-west-2.amazonaws.com"
+     PORT = 587
+
+     SUBJECT = "annejulian.net/contact"
+     BODY_TEXT = ("Received the following info:\n"
+                    "Name: " + data['name'] + "\n"
+                    "Return email: " + data['email'] + "\n"
+                    "Message: " + data['message']
+               )
+     BODY_HTML = """<html>
+          <head />
+          <body>
+               <h3>Received the following info:</h3>
+               Name: """ + data['name'] + """<br />
+               Return email: """ + data['email'] + """<br />
+               Message: """ + data['message'] + """
+          </body>
+          </html>
+     """
+
+     msg = MIMEMultipart('alternative')
+     msg['Subject'] = SUBJECT
+     msg['From'] = email.utils.formataddr((SENDERNAME, SENDER))
+     msg['To'] = RECIPIENT
+
+     part1 = MIMEText(BODY_TEXT, 'plain')
+     part2 = MIMEText(BODY_HTML, 'html')
+
+     msg.attach(part1)
+     msg.attach(part2)
+
+     try:
+          server = smtplib.SMTP(HOST, PORT)
+          server.ehlo()
+          server.starttls()
+          server.ehlo()
+          server.login(USERNAME_SMTP, PASSWORD_SMTP)
+          server.sendmail(SENDER, RECIPIENT, msg.as_string())
+          server.close()
+     except Exception as e:
+          print ("SMTP error: ", e)
+          httpCode = 503
+     else:
+          httpCode = 200
+          print ("Success")
+
+     return (jsonify(""), httpCode, {'Content-Type':'application/json'})
 
 @app.route('/get_gallery', methods=['GET'])
 def get_gallery():
@@ -64,4 +175,4 @@ def get_gallery():
      return (jsonify(gallery[page]), 200, {'Content-Type':'application/json'})
 
 if __name__ == '__main__':
-     app.run(debug=True)
+     app.run(debug=False)
