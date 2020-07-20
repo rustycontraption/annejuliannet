@@ -1,16 +1,16 @@
 const resolve = require('path').resolve;
 const config = {
-	devtool: false,
+	devtool: '',
 	entry:  __dirname + '/static/index.tsx',
 	output:{
         	path: __dirname + '/static/public/',
-        	filename: 'bundle.js',
+        	filename: '[name].bundle.js',
  	},
  	resolve: {
         	extensions: ['.js','.jsx','.css','.tsx','scss','less'],
 		modules:['node_modules'],
  	},
- 	module: {
+	module: {
         	rules: [
 		{
                 	test: /\.(js|jsx|tsx)$/,
@@ -67,7 +67,19 @@ const config = {
         			},
       			}]
 		},
-        ]}
+        ]},
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'all'
+				}
+			},
+			name: false
+		}
+	}
 };
 
 module.exports = config;
